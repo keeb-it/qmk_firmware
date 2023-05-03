@@ -17,7 +17,7 @@
 /* disable action features */
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
+#define NO_ACTION_ONESHOT
 
 // #define MATRIX_ROW_PINS_RIGHT { <row pins> }
 // #define MATRIX_COL_PINS_RIGHT { <col pins> }
