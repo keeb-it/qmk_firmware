@@ -8,9 +8,7 @@ enum Layers {
     FnLyr
 };
 
-// [Miryoku](https://github.com/manna-harbour/miryoku) inspired key layout
-// Think
-//  - Hold Spc is Enter
+// Inspired by [Miryoku](https://github.com/manna-harbour/miryoku) layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * -------------------- Base Layer --------------------
@@ -40,37 +38,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
      * │Tab│ Z │ X │ C │ V │ B │  │ N │ M │ < │ > │ ? │ } │
      * └───┴───┼───┼───┼───┼───┘  └───┼───┼───┼───┼───┴───┘
-     *         │Win│Del│PSc├───┐  ┌───┤Ret│BSp│   │
+     *         │Win│Del│PSc├───┐  ┌───┤Ret│BSp│Win│
      *         └───┼───┼───┤   │  │   ├───┼───┼───┘
      *             │Hom│End│Esc│  │Spc│Pg↑│Pg↓│
      *             └───┴───┴───┘  └───┴───┴───┘
      * NOTE:
-     *  - When held, G and H becomes LShift and RShift respectively (using mod-tap).
-     *  - When held, F and J becomes LCtrl and RCtrl respectively (using mod-tap).
-     *  - When held, D and K becomes LAlt and RAlt respectively (using mod-tap).
      *  - Pressing Shift and Left, Right, Up, and Down becomes Home, End, PgUp, and PgDown respectively (using key_overrides).
+     *  - When held, S and L becomes LShift and RShift respectively (using mod-tap).
+     *  - When held, D and K becomes LAlt and RAlt respectively (using mod-tap).
+     *  - When held, F and J becomes LCtrl and RCtrl respectively (using mod-tap).
      *  - Pressing Esc and Space together will act as CapsLock (using combos).
+     *
+     * ----------------- Mod-Tap + Combo -----------------
+     *
+     * ┌───┬───┬───┬───┬───┬───┐  ┌───┬───┬───┬───┬───┬───┐
+     * │   │   │   │   │   │   │  │   │   │   │   │   │   │
+     * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
+     * │   │   │   │   │   │   │  │   │   │   │   │   │   │
+     * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
+     * │   │   │Sft│Alt│Clt│   │  │   │Ctl│Alt│Sft│   │   │
+     * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
+     * │   │   │   │   │   │   │  │   │   │   │   │   │   │
+     * └───┴───┼───┼───┼───┼───┘  └───┼───┼───┼───┼───┴───┘
+     *         │   │   │   ├───┐  ┌───┤   │   │   │
+     *         └───┼───┼───┤   Caps   ├───┼───┼───┘
+     *             │   │   │   Lock   │   │   │
+     *             └───┴───┴───┘  └───┴───┴───┘
      */
     [BaseLyr] = LAYOUT(
-        KC_1,    KC_2,   KC_3,    KC_4,         KC_5,         KC_6,              /**/ KC_7,         KC_8,         KC_9,         KC_0,     KC_MINUS, KC_EQUAL,
-        KC_GRV,  KC_Q,   KC_W,    KC_E,         KC_R,         KC_T,              /**/ KC_Y,         KC_U,         KC_I,         KC_O,     KC_P,     KC_LBRC,
-        KC_BSLS, KC_A,   KC_S,    LALT_T(KC_D), LCTL_T(KC_F), LSFT_T(KC_G),      /**/ RSFT_T(KC_H), RCTL_T(KC_J), RALT_T(KC_K), KC_L,     KC_SCLN,  KC_QUOTE,
-        KC_TAB,  KC_Z,   KC_X,    KC_C,         KC_V,         KC_B,              /**/ KC_N,         KC_M,         KC_COMMA,     KC_DOT,   KC_SLASH, KC_RBRC,
-        KC_LWIN, KC_DEL, KC_PSCR, KC_LEFT,      KC_RIGHT,     LT(FnLyr, KC_ESC), /**/ KC_ENTER,     KC_BSPC,      _______,      KC_SPACE, KC_UP,    KC_DOWN
+        KC_1,    KC_2,   KC_3,         KC_4,         KC_5,         KC_6,              /**/ KC_7,     KC_8,         KC_9,         KC_0,         KC_MINUS, KC_EQUAL,
+        KC_GRV,  KC_Q,   KC_W,         KC_E,         KC_R,         KC_T,              /**/ KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,     KC_LBRC,
+        KC_BSLS, KC_A,   LSFT_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F), KC_G,              /**/ KC_H,     RCTL_T(KC_J), RALT_T(KC_K), RSFT_T(KC_L), KC_SCLN,  KC_QUOTE,
+        KC_TAB,  KC_Z,   KC_X,         KC_C,         KC_V,         KC_B,              /**/ KC_N,     KC_M,         KC_COMMA,     KC_DOT,       KC_SLASH, KC_RBRC,
+        KC_LWIN, KC_DEL, KC_PSCR,      KC_LEFT,      KC_RIGHT,     LT(FnLyr, KC_ESC), /**/ KC_ENTER, KC_BSPC,      KC_RWIN,      KC_SPACE,     KC_UP,    KC_DOWN
     ),
     /*
-     * --------------------- LT(1, Esc) ---------------------
+     * --------------------- LT(FnLyr, Esc) ---------------------
      *
      * ┌───┬───┬───┬───┬───┬───┐  ┌───┬───┬───┬───┬───┬───┐
      * │   │   │   │   │󰃝  │󰃠  │  │ 󰒮 │ 󰐎 │ 󰒭 │ 󰝟 │ 󰝞 │ 󰝝 │
      * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
      * │F1 │F2 │F3 │F4 │F5 │F6 │  │F7 │F8 │F9 │F10│F11│F12│
      * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
-     * │   │   │   │   │   │   │  │   │   │   │   │   │   │
+     * │   │   │Sft│Alt│Clt│   │  │   │Ctl│Alt│Sft│   │   │
      * ├───┼───┼───┼───┼───┼───┤  ├───┼───┼───┼───┼───┼───┤
      * │   │   │   │   │   │   │  │   │   │   │   │   │   │
      * └───┴───┼───┼───┼───┼───┘  └───┼───┼───┼───┼───┴───┘
-     *         │Win│Del│PSc├───┐  ┌───┤Ret│BSp│   │
+     *         │Win│Del│PSc├───┐  ┌───┤Ret│BSp│Win│
      *         └───┼───┼───┤   │  │   ├───┼───┼───┘
      *             │ ← │ → │---│  │Spc│ ↑ │ ↓ │
      *             └───┴───┴───┘  └───┴───┴───┘
@@ -78,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FnLyr] = LAYOUT(
         _______, _______, _______, _______, KC_BRID,  KC_BRIU, /**/ KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   /**/ KC_F7,    KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,
+        _______, _______, KC_LSFT, KC_LALT, KC_LCTL,  _______, /**/ _______,  KC_RCTL, KC_RALT, KC_RSFT,  _______, _______,
         _______, _______, _______, _______, _______,  _______, /**/ _______,  _______, _______, _______,  _______, _______,
-        _______, _______, _______, _______, _______,  _______, /**/ _______,  _______, _______, _______,  _______, _______,
-        KC_LWIN, KC_DEL,  KC_PSCR, KC_LEFT, KC_RIGHT, _______, /**/ KC_ENTER, KC_BSPC, _______, KC_SPACE, KC_UP,   KC_DOWN
+        KC_LWIN, KC_DEL,  KC_PSCR, KC_LEFT, KC_RIGHT, _______, /**/ KC_ENTER, KC_BSPC, KC_RWIN, KC_SPACE, KC_UP,   KC_DOWN
     )
 };
 
