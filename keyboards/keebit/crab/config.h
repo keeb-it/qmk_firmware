@@ -26,3 +26,6 @@
 #define SPLIT_HAND_PIN D5
 #define SPLIT_USB_DETECT
 #define SPLIT_USB_TIMEOUT 2500
+
+// NOTE: Uncomment the following line, if you want the left side to be the `master`
+// #define SPLIT_HAND_PIN_LOW_IS_LEFT
