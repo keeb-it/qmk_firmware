@@ -66,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *             └───┴───┴───┘  └───┴───┴───┘
      */
     [BaseLyr] = LAYOUT(
-        KC_1,    KC_2,   KC_3,         KC_4,         KC_5,         KC_6,              /**/ KC_7,     KC_8,         KC_9,         KC_0,         KC_MINUS, KC_EQUAL,
-        KC_TAB,  KC_Q,   KC_W,         KC_E,         KC_R,         KC_T,              /**/ KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,     KC_LBRC,
-        KC_GRV,  KC_A,   LSFT_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F), KC_G,              /**/ KC_H,     RCTL_T(KC_J), RALT_T(KC_K), RSFT_T(KC_L), KC_SCLN,  KC_QUOTE,
-        KC_BSLS, KC_Z,   KC_X,         KC_C,         KC_V,         KC_B,              /**/ KC_N,     KC_M,         KC_COMMA,     KC_DOT,       KC_SLASH, KC_RBRC,
-        KC_LWIN, KC_DEL, KC_PSCR,      KC_LEFT,      KC_RIGHT,     LT(FnLyr, KC_ESC), /**/ KC_ENTER, KC_BSPC,      KC_RWIN,      KC_SPACE,     KC_UP,    KC_DOWN
+        KC_1,    KC_2,   KC_3,         KC_4,         KC_5,         KC_6,              _______, /**/ _______, KC_7,     KC_8,         KC_9,         KC_0,         KC_MINUS, KC_EQUAL,
+        KC_TAB,  KC_Q,   KC_W,         KC_E,         KC_R,         KC_T,              _______, /**/ _______, KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,     KC_LBRC,
+        KC_GRV,  KC_A,   LSFT_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F), KC_G,              _______, /**/ _______, KC_H,     RCTL_T(KC_J), RALT_T(KC_K), RSFT_T(KC_L), KC_SCLN,  KC_QUOTE,
+        KC_BSLS, KC_Z,   KC_X,         KC_C,         KC_V,         KC_B,              _______, /**/ _______, KC_N,     KC_M,         KC_COMMA,     KC_DOT,       KC_SLASH, KC_RBRC,
+        KC_LWIN, KC_DEL, KC_PSCR,      KC_LEFT,      KC_RIGHT,     LT(FnLyr, KC_ESC), _______, /**/ _______, KC_ENTER, KC_BSPC,      KC_RWIN,      KC_SPACE,     KC_UP,    KC_DOWN
     ),
     /*
      * --------------------- LT(FnLyr, Esc) ---------------------
@@ -90,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *             └───┴───┴───┘  └───┴───┴───┘
      */
     [FnLyr] = LAYOUT(
-        _______, _______, _______, _______, KC_BRID,  KC_BRIU, /**/ KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   /**/ KC_F7,    KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,
-        _______, _______, KC_LSFT, KC_LALT, KC_LCTL,  _______, /**/ _______,  KC_RCTL, KC_RALT, KC_RSFT,  _______, _______,
-        _______, _______, _______, _______, _______,  _______, /**/ _______,  _______, _______, _______,  _______, _______,
-        KC_LWIN, KC_DEL,  KC_PSCR, KC_LEFT, KC_RIGHT, _______, /**/ KC_ENTER, KC_BSPC, KC_RWIN, KC_SPACE, KC_UP,   KC_DOWN
+        _______, _______, _______, _______, KC_BRID,  KC_BRIU, _______, /**/ _______, KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   _______, /**/ _______, KC_F7,    KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,
+        _______, _______, KC_LSFT, KC_LALT, KC_LCTL,  _______, _______, /**/ _______, _______,  KC_RCTL, KC_RALT, KC_RSFT,  _______, _______,
+        _______, _______, _______, _______, _______,  _______, _______, /**/ _______, _______,  _______, _______, _______,  _______, _______,
+        KC_LWIN, KC_DEL,  KC_PSCR, KC_LEFT, KC_RIGHT, _______, _______, /**/ _______, KC_ENTER, KC_BSPC, KC_RWIN, KC_SPACE, KC_UP,   KC_DOWN
     )
 };
 
