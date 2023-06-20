@@ -1,8 +1,8 @@
 {
     "manufacturer": "keeb.it!",
-    "keyboard_name": "crab!0.1",
+    "keyboard_name": "crab!0.2",
     "maintainer": "numToStr",
-    "bootloader": "caterina",
+    "development_board": "promicro",
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
@@ -15,12 +15,42 @@
         "key_override": true,
         "combo": true
     },
-    "processor": "atmega32u4",
     "url": "https://github.com/keeb-it/crab",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x0000",
         "vid": "0xFEED"
+    },
+    "matrix_pins": {
+        "rows": ["D4", "C6", "D7", "E6", "B4"],
+        "cols": ["B3", "B1", "F7", "F6", "F5", "F4", "B2"]
+    },
+    "encoder": {
+        "enabled": true,
+        "rotary": [
+            {
+                "pin_a": "B5",
+                "pin_b": "B6",
+                "resolution": 2
+            }
+        ]
+    },
+    "split": {
+        "enabled": true,
+        "main": "left",
+        "soft_serial_pin": "D0",
+        "transport": {
+            "protocol": "serial"
+        },
+        "matrix_pins": {
+            "right": {
+                "rows": ["D4", "C6", "D7", "E6", "B4"],
+                "cols": ["B3", "B1", "F7", "F6", "F5", "F4", "B2"]
+            }
+        },
+        "usb_detect": {
+            "timeout": 2500
+        }
     },
     "layouts": {
         "LAYOUT": {

@@ -132,3 +132,24 @@ const uint16_t PROGMEM caps_combo[] = {LT(FnLyr, KC_ESC), KC_SPACE, COMBO_END};
 combo_t key_combos[] = {
     [CAPS_COMBO] = COMBO(caps_combo, KC_CAPS),
 };
+
+// ======================= Encoder =======================
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { /* First encoder */
+        if (clockwise) {
+            tap_code(KC_VOLU);
+            // tap_code_delay(KC_VOLU, 10);
+        } else {
+            tap_code(KC_VOLD);
+            // tap_code_delay(KC_VOLD, 10);
+        }
+    } else if (index == 1) { /* Second encoder */
+        if (clockwise) {
+            tap_code(KC_BRIGHTNESS_UP);
+        } else {
+            tap_code(KC_BRIGHTNESS_DOWN);
+        }
+    }
+    return false;
+}
