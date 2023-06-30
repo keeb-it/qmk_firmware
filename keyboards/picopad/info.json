@@ -24,19 +24,19 @@
     },
     "matrix_pins": {
         "rows": ["GP6", "GP7"],
-        "cols": ["GP21", "GP20", "GP19"]
+        "cols": ["GP28", "GP27", "GP26"]
     },
     "split": {
         "enabled": true,
         "main": "left",
-        "soft_serial_pin": "GP1",
+        "soft_serial_pin": "GP11",
         "transport": {
             "protocol": "serial"
         },
         "matrix_pins": {
             "right": {
                 "rows": ["GP6", "GP7"],
-                "cols": ["GP19", "GP21", "GP20"]
+                "cols": ["GP28", "GP27", "GP26"]
             }
         },
         "usb_detect": {
@@ -47,8 +47,8 @@
         "enabled": true,
         "rotary": [
             {
-                "pin_a": "GP10",
-                "pin_b": "GP11",
+                "pin_a": "GP13",
+                "pin_b": "GP12",
                 "resolution": 2
             }
         ]
