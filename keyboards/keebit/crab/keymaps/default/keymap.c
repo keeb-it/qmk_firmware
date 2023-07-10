@@ -3,10 +3,65 @@
 
 #include QMK_KEYBOARD_H
 
-enum Layers {
-    BaseLyr,
-    FnLyr
+
+// ======================= Tap Dance =======================
+
+enum {
+    TD_MNXT_MPREV,
 };
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Media-Next, twice for Media-Previous
+    [TD_MNXT_MPREV] = ACTION_TAP_DANCE_DOUBLE(KC_MNXT, KC_MPRV),
+};
+
+// ======================= Layers =======================
+
+enum Layers {
+    BaseLayer,
+    FnLayer,
+    NavLayer
+};
+
+enum CustomKeycodes {
+    SS_LOREM = SAFE_RANGE,
+};
+
+// Left-hand home row mods
+#define GUI_A LGUI_T(KC_A)
+#define ALT_S LALT_T(KC_S)
+#define SFT_D LSFT_T(KC_D)
+#define CTL_F LCTL_T(KC_F)
+
+// Right-hand home row mods
+#define CTL_J RCTL_T(KC_J)
+#define SFT_K RSFT_T(KC_K)
+#define ALT_L LALT_T(KC_L)
+#define GUI_SCLN RGUI_T(KC_SCLN)
+
+// Thumb Keys
+#define L_THUMB LT(NavLayer, KC_ESC)
+#define R_THUMB LT(FnLayer, KC_SPACE)
+
+// Rotary
+#define L_ROT TD(TD_MNXT_MPREV)
+#define R_ROT KC_MPLY
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case SS_LOREM:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum scelerisque velit non cursus. Morbi accumsan diam in mauris sagittis laoreet. Curabitur hendrerit tortor dapibus mattis mattis. Suspendisse sollicitudin nec dui id tincidunt. Nam pellentesque libero nisi, eget tempus mauris rutrum nec. Quisque scelerisque scelerisque libero id tempor. Donec lectus orci, dictum eu eros in, ornare viverra ex. Morbi blandit eleifend odio, eu ullamcorper augue mollis eget. Praesent ligula enim, mattis egestas rhoncus in, vehicula at lectus. Cras maximus eleifend sagittis. Fusce sit amet scelerisque tellus, placerat tempor magna. Nulla sagittis lobortis felis, et semper magna facilisis a. Maecenas laoreet mi sit amet eros placerat imperdiet.");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    }
+    return true;
+};
+
 
 // Inspired by [Miryoku](https://github.com/manna-harbour/miryoku) layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -65,12 +120,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *             │   │   │   Lock   │   │   │
      *             └───┴───┴───┘  └───┴───┴───┘
      */
-    [BaseLyr] = LAYOUT(
-        KC_1,    KC_2,   KC_3,         KC_4,         KC_5,         KC_6,              _______, /**/ _______, KC_7,     KC_8,         KC_9,         KC_0,         KC_MINUS, KC_EQUAL,
-        KC_TAB,  KC_Q,   KC_W,         KC_E,         KC_R,         KC_T,              _______, /**/ _______, KC_Y,     KC_U,         KC_I,         KC_O,         KC_P,     KC_LBRC,
-        KC_GRV,  KC_A,   LSFT_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F), KC_G,              _______, /**/ _______, KC_H,     RCTL_T(KC_J), RALT_T(KC_K), RSFT_T(KC_L), KC_SCLN,  KC_QUOTE,
-        KC_BSLS, KC_Z,   KC_X,         KC_C,         KC_V,         KC_B,              _______, /**/ _______, KC_N,     KC_M,         KC_COMMA,     KC_DOT,       KC_SLASH, KC_RBRC,
-        KC_LWIN, KC_DEL, KC_PSCR,      KC_LEFT,      KC_RIGHT,     LT(FnLyr, KC_ESC), KC_MPLY, /**/ KC_MUTE, KC_ENTER, KC_BSPC,      KC_RWIN,      KC_SPACE,     KC_UP,    KC_DOWN
+    [BaseLayer] = LAYOUT(
+        KC_1,    KC_2,   KC_3,    KC_4,    KC_5,     KC_6,    _______, /**/ _______, KC_7,     KC_8,    KC_9,     KC_0,    KC_MINUS, KC_EQUAL,
+        KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,     KC_T,    _______, /**/ _______, KC_Y,     KC_U,    KC_I,     KC_O,    KC_P,     KC_LBRC,
+        KC_GRV,  GUI_A,  ALT_S,   SFT_D,   CTL_F,    KC_G,    _______, /**/ _______, KC_H,     CTL_J,   SFT_K,    ALT_L,   GUI_SCLN, KC_QUOTE,
+        KC_BSLS, KC_Z,   KC_X,    KC_C,    KC_V,     KC_B,    _______, /**/ _______, KC_N,     KC_M,    KC_COMMA, KC_DOT,  KC_SLASH, KC_RBRC,
+        KC_LWIN, KC_DEL, KC_PSCR, KC_LEFT, KC_RIGHT, L_THUMB, L_ROT,   /**/ R_ROT,   KC_ENTER, KC_BSPC, KC_RWIN,  R_THUMB, KC_UP,    KC_DOWN
     ),
     /*
      * --------------------- LT(FnLyr, Esc) ---------------------
@@ -89,12 +144,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *             │ ← │ → │---│  │Spc│ ↑ │ ↓ │
      *             └───┴───┴───┘  └───┴───┴───┘
      */
-    [FnLyr] = LAYOUT(
-        _______, _______, _______, _______, KC_BRID,  KC_BRIU, _______, /**/ _______, KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
-        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   _______, /**/ _______, KC_F7,    KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,
-        _______, _______, KC_LSFT, KC_LALT, KC_LCTL,  _______, _______, /**/ _______, _______,  KC_RCTL, KC_RALT, KC_RSFT,  _______, _______,
-        _______, _______, _______, _______, _______,  _______, _______, /**/ _______, _______,  _______, _______, _______,  _______, _______,
-        KC_LWIN, KC_DEL,  KC_PSCR, KC_LEFT, KC_RIGHT, _______, _______, /**/ _______, KC_ENTER, KC_BSPC, KC_RWIN, KC_SPACE, KC_UP,   KC_DOWN
+    [FnLayer] = LAYOUT(
+        KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, /**/ _______, _______, _______, _______, _______, _______, _______,
+        KC_F7,    KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, /**/ _______, _______, _______, _______, _______, _______, _______,
+        _______,  _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______,
+        SS_LOREM, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______,
+        _______,  _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______
+    ),
+    [NavLayer] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
+        _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_BRID, KC_BRIU, _______, _______,  _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______,  _______, SS_LOREM,
+        _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______,  _______, _______
     )
 };
 
@@ -127,7 +189,7 @@ enum combos {
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
 // Esc + Space = CapsLock
-const uint16_t PROGMEM caps_combo[] = {LT(FnLyr, KC_ESC), KC_SPACE, COMBO_END};
+const uint16_t PROGMEM caps_combo[] = {L_THUMB, R_THUMB, COMBO_END};
 
 combo_t key_combos[] = {
     [CAPS_COMBO] = COMBO(caps_combo, KC_CAPS),
@@ -138,17 +200,15 @@ combo_t key_combos[] = {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder */
         if (clockwise) {
-            tap_code(KC_VOLU);
-            // tap_code_delay(KC_VOLU, 10);
+            tap_code(KC_WH_D);
         } else {
-            tap_code(KC_VOLD);
-            // tap_code_delay(KC_VOLD, 10);
+            tap_code(KC_WH_U);
         }
     } else if (index == 1) { /* Second encoder */
         if (clockwise) {
-            tap_code(KC_BRIGHTNESS_UP);
+            tap_code(KC_VOLU);
         } else {
-            tap_code(KC_BRIGHTNESS_DOWN);
+            tap_code(KC_VOLD);
         }
     }
     return false;
