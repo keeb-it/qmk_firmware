@@ -14,7 +14,8 @@
         "nkro": true,
         "lto": true,
         "key_override": true,
-        "combo": true
+        "combo": true,
+        "rgblight": true
     },
     "url": "",
     "usb": {
@@ -25,6 +26,30 @@
     "matrix_pins": {
         "rows": ["GP6", "GP7"],
         "cols": ["GP28", "GP27", "GP26"]
+    },
+    "ws2812": {
+        "driver": "vendor",
+        "pin": "GP16"
+    },
+    "rgblight": {
+        "led_count": 1,
+        "hue_steps": 4,
+        "saturation_steps": 5,
+        "brightness_steps": 5,
+        "max_brightness": 50,
+        "sleep": false,
+        "layers": {
+            "blink": true,
+            "enabled": true,
+            "max": 22,
+            "override_rgb": true
+        },
+        "animations": {
+            "breathing": true,
+            "christmas": true,
+            "rainbow_swirl": true,
+            "rgb_test": true
+        }
     },
     "split": {
         "enabled": true,
