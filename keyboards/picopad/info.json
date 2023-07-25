@@ -54,7 +54,7 @@
     "split": {
         "enabled": true,
         "main": "left",
-        "soft_serial_pin": "GP11",
+        "soft_serial_pin": "GP13",
         "transport": {
             "protocol": "serial"
         },
@@ -72,7 +72,7 @@
         "enabled": true,
         "rotary": [
             {
-                "pin_a": "GP13",
+                "pin_a": "GP11",
                 "pin_b": "GP12",
                 "resolution": 2
             }
