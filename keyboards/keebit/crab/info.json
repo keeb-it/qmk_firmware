@@ -13,7 +13,9 @@
         "nkro": true,
         "lto": true,
         "key_override": true,
-        "combo": true
+        "combo": true,
+        "tap_dance": true,
+        "caps_word": true
     },
     "url": "https://github.com/keeb-it/crab",
     "usb": {
@@ -38,6 +40,9 @@
     "split": {
         "enabled": true,
         "soft_serial_pin": "D0",
+        "bootmagic": {
+            "matrix": [5, 6]
+        },
         "transport": {
             "protocol": "serial"
         },
@@ -72,8 +77,6 @@
                 { "label": "4", "matrix": [0, 3], "x": 3, "y": 0 },
                 { "label": "5", "matrix": [0, 4], "x": 4, "y": 0 },
                 { "label": "6", "matrix": [0, 5], "x": 5, "y": 0 },
-                { "label": " ", "matrix": [0, 6], "x": 6, "y": 0 },
-                { "label": " ", "matrix": [5, 0], "x": 7, "y": 0 },
                 { "label": "7", "matrix": [5, 1], "x": 8, "y": 0 },
                 { "label": "8", "matrix": [5, 2], "x": 9, "y": 0 },
                 { "label": "9", "matrix": [5, 3], "x": 10, "y": 0 },
@@ -87,8 +90,6 @@
                 { "label": "E", "matrix": [1, 3], "x": 3, "y": 1 },
                 { "label": "R", "matrix": [1, 4], "x": 4, "y": 1 },
                 { "label": "T", "matrix": [1, 5], "x": 5, "y": 1 },
-                { "label": " ", "matrix": [1, 6], "x": 6, "y": 1 },
-                { "label": " ", "matrix": [6, 0], "x": 7, "y": 1 },
                 { "label": "Y", "matrix": [6, 1], "x": 8, "y": 1 },
                 { "label": "U", "matrix": [6, 2], "x": 9, "y": 1 },
                 { "label": "I", "matrix": [6, 3], "x": 10, "y": 1 },
@@ -102,8 +103,6 @@
                 { "label": "D", "matrix": [2, 3], "x": 3, "y": 2 },
                 { "label": "F", "matrix": [2, 4], "x": 4, "y": 2 },
                 { "label": "G", "matrix": [2, 5], "x": 5, "y": 2 },
-                { "label": " ", "matrix": [2, 6], "x": 6, "y": 2 },
-                { "label": " ", "matrix": [7, 0], "x": 7, "y": 2 },
                 { "label": "H", "matrix": [7, 1], "x": 8, "y": 2 },
                 { "label": "J", "matrix": [7, 2], "x": 9, "y": 2 },
                 { "label": "K", "matrix": [7, 3], "x": 10, "y": 2 },
@@ -117,8 +116,6 @@
                 { "label": "C", "matrix": [3, 3], "x": 3, "y": 3 },
                 { "label": "V", "matrix": [3, 4], "x": 4, "y": 3 },
                 { "label": "B", "matrix": [3, 5], "x": 5, "y": 3 },
-                { "label": " ", "matrix": [3, 6], "x": 6, "y": 3 },
-                { "label": " ", "matrix": [8, 0], "x": 7, "y": 3 },
                 { "label": "N", "matrix": [8, 1], "x": 8, "y": 3 },
                 { "label": "M", "matrix": [8, 2], "x": 9, "y": 3 },
                 { "label": ",<", "matrix": [8, 3], "x": 10, "y": 3 },
@@ -132,8 +129,8 @@
                 { "label": "LEFT", "matrix": [4, 3], "x": 3, "y": 4 },
                 { "label": "RIGHT", "matrix": [4, 4], "x": 4, "y": 4 },
                 { "label": "ESC", "matrix": [4, 5], "x": 5, "y": 4 },
-                { "label": " ", "matrix": [4, 6], "x": 6, "y": 4 },
-                { "label": " ", "matrix": [9, 0], "x": 7, "y": 4 },
+                { "label": "L_ROT", "matrix": [4, 6], "x": 6, "y": 4 },
+                { "label": "R_ROT", "matrix": [9, 0], "x": 7, "y": 4 },
                 { "label": "ENTER", "matrix": [9, 1], "x": 8, "y": 4 },
                 { "label": "BSPC", "matrix": [9, 2], "x": 9, "y": 4 },
                 { "label": "RWIN", "matrix": [9, 3], "x": 10, "y": 4 },

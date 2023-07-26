@@ -6,7 +6,7 @@
 
 // ======================= Tap Dance =======================
 
-enum {
+enum TapDance {
     TD_MNXT_MPREV,
 };
 
@@ -41,7 +41,7 @@ enum CustomKeycodes {
 #define GUI_SCLN RGUI_T(KC_SCLN)
 
 // Thumb Keys
-#define L_THUMB LT(NavLayer, KC_ESC)
+#define L_THUMB LT(NavLayer, KC_ENTER)
 #define R_THUMB LT(FnLayer, KC_SPACE)
 
 // Rotary
@@ -121,11 +121,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *             └───┴───┴───┘  └───┴───┴───┘
      */
     [BaseLayer] = LAYOUT(
-        KC_1,    KC_2,   KC_3,    KC_4,    KC_5,     KC_6,    _______, /**/ _______, KC_7,     KC_8,    KC_9,     KC_0,    KC_MINUS, KC_EQUAL,
-        KC_TAB,  KC_Q,   KC_W,    KC_E,    KC_R,     KC_T,    _______, /**/ _______, KC_Y,     KC_U,    KC_I,     KC_O,    KC_P,     KC_LBRC,
-        KC_GRV,  GUI_A,  ALT_S,   SFT_D,   CTL_F,    KC_G,    _______, /**/ _______, KC_H,     CTL_J,   SFT_K,    ALT_L,   GUI_SCLN, KC_QUOTE,
-        KC_BSLS, KC_Z,   KC_X,    KC_C,    KC_V,     KC_B,    _______, /**/ _______, KC_N,     KC_M,    KC_COMMA, KC_DOT,  KC_SLASH, KC_RBRC,
-        KC_LWIN, KC_DEL, KC_PSCR, KC_LEFT, KC_RIGHT, L_THUMB, L_ROT,   /**/ R_ROT,   KC_ENTER, KC_BSPC, KC_RWIN,  R_THUMB, KC_UP,    KC_DOWN
+        KC_1,    KC_2,    KC_3,   KC_4,    KC_5,    KC_6,           /**/        KC_7,    KC_8,   KC_9,     KC_0,    KC_MINUS, KC_EQUAL,
+        KC_TAB,  KC_Q,    KC_W,   KC_E,    KC_R,    KC_T,           /**/        KC_Y,    KC_U,   KC_I,     KC_O,    KC_P,     KC_LBRC,
+        KC_GRV,  GUI_A,   ALT_S,  SFT_D,   CTL_F,   KC_G,           /**/        KC_H,    CTL_J,  SFT_K,    ALT_L,   GUI_SCLN, KC_QUOTE,
+        KC_BSLS, KC_Z,    KC_X,   KC_C,    KC_V,    KC_B,           /**/        KC_N,    KC_M,   KC_COMMA, KC_DOT,  KC_SLASH, KC_RBRC,
+        _______, KC_PSCR, KC_ESC, _______, _______, L_THUMB, L_ROT, /**/ R_ROT, KC_BSPC, KC_DEL, _______,  R_THUMB, _______,  _______
     ),
     /*
      * --------------------- LT(FnLyr, Esc) ---------------------
@@ -145,17 +145,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *             └───┴───┴───┘  └───┴───┴───┘
      */
     [FnLayer] = LAYOUT(
-        KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, /**/ _______, _______, _______, _______, _______, _______, _______,
-        KC_F7,    KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, /**/ _______, _______, _______, _______, _______, _______, _______,
-        _______,  _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______,
-        SS_LOREM, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______,
+        KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,            /**/          _______, _______, _______, _______, _______, _______,
+        KC_F7,    KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,           /**/          _______, _______, _______, _______, _______, _______,
+        _______,  _______, _______, _______, _______, _______,          /**/          _______, _______, _______, _______, _______, _______,
+        SS_LOREM, _______, _______, _______, _______, _______,          /**/          _______, _______, _______, _______, _______, _______,
         _______,  _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______, _______, _______
     ),
-    [NavLayer] = LAYOUT(
-        _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
-        _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_BRID, KC_BRIU, _______, _______,  _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, /**/ _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______,  _______, SS_LOREM,
+   [NavLayer] = LAYOUT(
+        _______, _______, _______, _______, _______, _______,          /**/          KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD, KC_VOLU,
+        _______, _______, _______, _______, _______, _______,          /**/          KC_BRID, KC_BRIU, _______, _______,  _______, _______,
+        _______, _______, _______, _______, _______, _______,          /**/          KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______, _______,
+        _______, _______, _______, _______, _______, _______,          /**/          _______, _______, _______, _______,  _______, SS_LOREM,
         _______, _______, _______, _______, _______, _______, _______, /**/ _______, _______, _______, _______, _______,  _______, _______
     )
 };
@@ -192,7 +192,7 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 const uint16_t PROGMEM caps_combo[] = {L_THUMB, R_THUMB, COMBO_END};
 
 combo_t key_combos[] = {
-    [CAPS_COMBO] = COMBO(caps_combo, KC_CAPS),
+    [CAPS_COMBO] = COMBO(caps_combo, QK_CAPS_WORD_TOGGLE),
 };
 
 // ======================= Encoder =======================
