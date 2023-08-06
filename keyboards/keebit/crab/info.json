@@ -1,8 +1,6 @@
 {
     "manufacturer": "keeb.it!",
-    "keyboard_name": "crab!0.2",
     "maintainer": "numToStr",
-    "development_board": "promicro",
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
@@ -22,47 +20,19 @@
         "device_version": "1.0.0",
         "pid": "0x0000",
         "vid": "0xFEED",
+        "force_nkro": true,
         "polling_interval": 1
     },
-    "matrix_pins": {
-        "rows": ["D4", "C6", "D7", "E6", "B4"],
-        "cols": ["B3", "B1", "F7", "F6", "F5", "F4", "B2"]
-    },
     "encoder": {
-        "enabled": true,
-        "rotary": [
-            {
-                "pin_a": "B5",
-                "pin_b": "B6",
-                "resolution": 1
-            }
-        ]
+        "enabled": true
     },
     "split": {
         "enabled": true,
-        "soft_serial_pin": "D0",
         "bootmagic": {
             "matrix": [5, 6]
         },
         "transport": {
             "protocol": "serial"
-        },
-        "matrix_pins": {
-            "right": {
-                "rows": ["D4", "C6", "D7", "E6", "B4"],
-                "cols": ["B2", "B3", "B1", "F7", "F6", "F5", "F4"]
-            }
-        },
-        "encoder": {
-            "right": {
-                "rotary": [
-                    {
-                        "pin_a": "B5",
-                        "pin_b": "B6",
-                        "resolution": 1
-                    }
-                ]
-            }
         },
         "usb_detect": {
             "enabled": true,

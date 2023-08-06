@@ -1,0 +1,26 @@
+{
+    "keyboard_name": "crab!60.arcadia",
+    "bootloader": "rp2040",
+    "processor": "RP2040",
+    "matrix_pins": {
+        "rows": ["GP4", "GP5", "GP6", "GP7", "GP8"],
+        "cols": ["GP20", "GP22", "GP26", "GP27", "GP28", "GP29", "GP23"]
+    },
+    "encoder": {
+        "rotary": [{ "pin_a": "GP9", "pin_b": "GP21", "resolution": 1 }]
+    },
+    "split": {
+        "soft_serial_pin": "GP3",
+        "matrix_pins": {
+            "right": {
+                "rows": ["GP4", "GP5", "GP6", "GP7", "GP8"],
+                "cols": ["GP23", "GP20", "GP22", "GP26", "GP27", "GP28", "GP29"]
+            }
+        },
+        "encoder": {
+            "right": {
+                "rotary": [{ "pin_a": "GP9", "pin_b": "GP21", "resolution": 1 }]
+            }
+        }
+    }
+}
