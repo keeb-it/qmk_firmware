@@ -10,7 +10,7 @@ enum Layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BaseLyr] = LAYOUT(
-        LT(FnLyr, KC_A),   KC_B/* RGB_MOD */,        KC_CAPS, /**/ _______,    KC_A,  KC_B,
+        LT(FnLyr, KC_A),   KC_B/* RGB_MOD */,        QK_BOOT, /**/ QK_BOOT,    KC_A,  KC_B,
         LSFT_T(KC_1),       RSFT_T(KC_2),   KC_MPLY, /**/ KC_MUTE,    KC_UP, KC_DOWN
     ),
     [FnLyr] = LAYOUT(

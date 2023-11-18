@@ -29,15 +29,16 @@
     },
     "ws2812": {
         "driver": "vendor",
-        "pin": "GP16"
+        "pin": "GP17"
     },
     "rgblight": {
+        "split": true,
         "led_count": 1,
         "hue_steps": 4,
         "saturation_steps": 5,
         "brightness_steps": 5,
         "max_brightness": 50,
-        "sleep": false,
+        "sleep": true,
         "layers": {
             "blink": true,
             "enabled": true,
@@ -54,7 +55,6 @@
     "split": {
         "enabled": true,
         "main": "left",
-        "soft_serial_pin": "GP13",
         "transport": {
             "protocol": "serial"
         },
