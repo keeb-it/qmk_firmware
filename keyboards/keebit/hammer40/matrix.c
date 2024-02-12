@@ -30,7 +30,11 @@ static inline void shift_out(uint16_t value) {
     writePinLow(SPI_LATCH_PIN);
     spi_transmit(message, 2);
     writePinHigh(SPI_LATCH_PIN);
-    matrix_output_select_delay();
+    // NOTE:
+    // Using `matrix_io_delay` instead of `matrix_output_select_delay` because of double keypress bug.
+    // Read more at https://discord.com/channels/440868230475677696/1202661103662792714
+    matrix_io_delay();
+    // matrix_output_select_delay();
 }
 
 static inline void select_col(uint8_t col) {
