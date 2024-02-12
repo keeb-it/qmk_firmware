@@ -4,5 +4,3 @@ CUSTOM_MATRIX = lite
 SRC += matrix.c
 # QUANTUM_LIB_SRC += spi_master.c
 SPI_DRIVER_REQUIRED = yes
-OLED_ENABLE = yes
-WPM_ENABLE = yes

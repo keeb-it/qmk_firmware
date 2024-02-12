@@ -17,7 +17,8 @@
         "lto": true,
         "mousekey": true,
         "nkro": true,
-        "rgblight": true
+        "rgblight": true,
+        "combo": true
     },
     "matrix_pins": {
         "rows": ["GP26", "GP27", "GP28", "GP4"],
