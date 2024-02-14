@@ -6,9 +6,8 @@
 #include "quantum.h"
 
 enum hammer_rgb_layers {
-    RGBL_BASE = 0,
-    RGBL_CAPSL = 1,
-    RGBL_CAPSW = 2,
+    RGBL_CAPSL = 0,
+    RGBL_CAPSW = 1,
 };
 
 enum hammer_layers {
