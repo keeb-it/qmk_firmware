@@ -12,4 +12,6 @@ enum hammer_rgb_layers {
 
 enum hammer_layers {
     _BASE,
+    _NUM,
+    _NAV
 };

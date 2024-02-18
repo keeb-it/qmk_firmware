@@ -9,11 +9,11 @@
 
 // ===== LED/RGB INDICATOR =====
 const rgblight_segment_t PROGMEM capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, RGBLED_NUM, HSV_BLUE}
+    {0, RGBLIGHT_LED_COUNT, HSV_BLUE}
 );
 
 const rgblight_segment_t PROGMEM capsword_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, RGBLED_NUM, HSV_WHITE}
+    {0, RGBLIGHT_LED_COUNT, HSV_WHITE}
 );
 
 // Now define the array of layers. Later layers take precedence
@@ -36,11 +36,12 @@ __attribute__((weak)) void caps_word_set_user(bool active) {
 
 void keyboard_post_init_kb(void) {
     // Set LED color at the startup; by default it's red
-    rgblight_sethsv(RGB_DEFAULT_COLOR);
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(RGB_DEFAULT_COLOR);
 
     // Enable the on-board WS2812 LED
-    setPinOutput(RGB_ENABLE_PIN);
-    writePin(RGB_ENABLE_PIN, true);
+    gpio_set_pin_output(RGB_ENABLE_PIN);
+    gpio_write_pin(RGB_ENABLE_PIN, true);
     wait_ms(30);
 
     // Enable the LED layers

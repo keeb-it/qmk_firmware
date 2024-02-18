@@ -14,11 +14,14 @@
         "command": false,
         "console": false,
         "extrakey": true,
-        "lto": true,
         "mousekey": true,
         "nkro": true,
         "rgblight": true,
-        "combo": true
+        "combo": true,
+        "tap_dance": true
+    },
+    "build": {
+        "lto": true
     },
     "matrix_pins": {
         "rows": ["GP26", "GP27", "GP28", "GP4"],
@@ -47,16 +50,13 @@
             "snake": true,
             "twinkle": true
         },
-        "brightness_steps": 2,
-        "hue_steps": 2,
         "layers": {
             "blink": true,
             "enabled": true,
             "override_rgb": true
         },
         "led_count": 1,
-        "max_brightness": 20,
-        "saturation_steps": 2,
+        "max_brightness": 15,
         "sleep": true
     },
     "url": "https://github.com/keeb-it/hammer40",
