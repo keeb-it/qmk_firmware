@@ -41,7 +41,7 @@ void keyboard_post_init_kb(void) {
 
     // Enable the on-board WS2812 LED
     gpio_set_pin_output(RGB_ENABLE_PIN);
-    gpio_write_pin(RGB_ENABLE_PIN, true);
+    gpio_write_pin_high(RGB_ENABLE_PIN);
     wait_ms(30);
 
     // Enable the LED layers

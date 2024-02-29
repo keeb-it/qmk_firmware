@@ -56,7 +56,7 @@
             "override_rgb": true
         },
         "led_count": 1,
-        "max_brightness": 15,
+        "max_brightness": 5,
         "sleep": true
     },
     "url": "https://github.com/keeb-it/hammer40",
