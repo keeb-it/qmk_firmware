@@ -43,15 +43,7 @@
     },
     "processor": "RP2040",
     "rgblight": {
-        "animations": {
-            "breathing": true,
-            "christmas": true,
-            "rainbow_swirl": true,
-            "snake": true,
-            "twinkle": true
-        },
         "layers": {
-            "blink": true,
             "enabled": true,
             "override_rgb": true
         },
