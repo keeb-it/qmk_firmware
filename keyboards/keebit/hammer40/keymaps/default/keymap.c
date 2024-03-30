@@ -17,13 +17,40 @@
 #define EECLR_3 KC_LBRC
 
 // Rotary
-#define KK_ROT KC_MPLY
+#define ROTARY TD(TD_MEDIA)
+
+enum hammer_tapdance {
+    TD_MEDIA,
+    TD_COPY_CUT,
+};
+
+void rotary_dance_finished(tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1: register_code(KC_MPLY); break;
+        case 2: register_code(KC_MNXT); break;
+        case 3: register_code(KC_MPRV); break;
+    }
+}
+
+void rotary_dance_reset(tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1: unregister_code(KC_MPLY); break;
+        case 2: unregister_code(KC_MNXT); break;
+        case 3: unregister_code(KC_MPRV); break;
+    }
+}
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Media-Next, twice for Media-Previous
+    [TD_MEDIA] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rotary_dance_finished, rotary_dance_reset),
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         BOOTL_1, BOOTL_2, BOOTL_3, KC_E,    KC_R,    KC_T,            KC_Y,    KC_U,    KC_I,     EECLR_1, EECLR_2,  EECLR_3,
         KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,            KC_H,    KC_J,    KC_K,     KC_L,    KC_SCLN,  KC_QUOTE,
-        KC_RBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KK_ROT, KC_N,    KC_M,    KC_COMMA, KC_DOT,  KC_SLASH, KC_MINUS,
+        KC_RBRC, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    ROTARY, KC_N,    KC_M,    KC_COMMA, KC_DOT,  KC_SLASH, KC_MINUS,
         KC_BSLS, KC_PSCR, KC_LCTL, KC_LGUI, KC_LALT, L_THUMB, KC_ESC, R_THUMB, KC_LSFT, KC_RCTL,  KC_BSPC, KC_DEL,   KC_EQUAL
     ),
     [_NUM] = LAYOUT(
