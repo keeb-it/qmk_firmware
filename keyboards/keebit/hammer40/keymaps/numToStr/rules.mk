@@ -1,4 +1,4 @@
 ENCODER_MAP_ENABLE = yes
 CAPS_WORD_ENABLE = yes
-# OLED_ENABLE = yes
-# WPM_ENABLE = yes
+OLED_ENABLE = yes
+WPM_ENABLE = yes
