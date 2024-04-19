@@ -1,7 +1,8 @@
 // Copyright 2020-2023 numToStr (@numToStr)
 // SPDX-License-Identifier: GPL-2.0-or-later
-#include "quantum.h"
 
+#include "string.h"
+#include "matrix.h"
 #include "wait.h"
 #include "spi_master.h"
 

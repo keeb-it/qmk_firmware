@@ -35,6 +35,8 @@ __attribute__((weak)) void caps_word_set_user(bool active) {
 }
 
 void keyboard_post_init_kb(void) {
+    // Enable on-board LED only when OLED is disabled, as OLED covers the RGB
+    #ifndef OLED_ENABLE
     // Set LED color at the startup; by default it's red
     rgblight_enable_noeeprom();
     rgblight_sethsv_noeeprom(RGB_DEFAULT_COLOR);
@@ -46,5 +48,7 @@ void keyboard_post_init_kb(void) {
 
     // Enable the LED layers
     rgblight_layers = rgb_layers;
+    #endif /* ifndef OLED_ENABLE */
+
     keyboard_post_init_user();
 }
