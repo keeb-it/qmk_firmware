@@ -85,12 +85,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // ###### Combos ######
-const uint16_t PROGMEM caps_combo[] = {L_THUMB, R_THUMB, COMBO_END};
+const uint16_t PROGMEM capsw_combo[] = {KC_G, KC_H, COMBO_END};
 const uint16_t PROGMEM bootl_combo[] = {BOOTL_1, BOOTL_2, BOOTL_3, COMBO_END};
 const uint16_t PROGMEM eeclr_combo[] = {EECLR_1, EECLR_2, EECLR_3, COMBO_END};
 
 combo_t key_combos[] = {
-     COMBO(caps_combo, QK_CAPS_WORD_TOGGLE),
+     COMBO(capsw_combo, QK_CAPS_WORD_TOGGLE),
      COMBO(bootl_combo, QK_BOOTLOADER),
      COMBO(eeclr_combo, QK_CLEAR_EEPROM),
 };
