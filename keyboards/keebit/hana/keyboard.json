@@ -13,9 +13,7 @@
         "console": false,
         "extrakey": true,
         "mousekey": true,
-        "nkro": true,
-        "rgblight": false,
-        "combo": true
+        "nkro": true
     },
     "processor": "RP2040",
     "url": "https://github.com/keeb-it/hana",

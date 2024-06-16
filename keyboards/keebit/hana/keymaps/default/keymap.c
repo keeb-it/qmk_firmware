@@ -2,10 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include <stdio.h>
 
-#define BOOTL_1 KC_A
-#define BOOTL_2 KC_B
 
 // Rotary
 #define L_ROT KC_MNXT
@@ -26,25 +23,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = {  ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [0] = {  ENCODER_CCW_CW(KC_MS_WH_UP, KC_MS_WH_DOWN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
 };
 #endif
-
-enum coral_combos {
-    BOOTL_COMBO,
-    COMBO_LENGTH
-};
-
-uint16_t COMBO_LEN = COMBO_LENGTH;
-
-const uint16_t PROGMEM bootl_combo[] = {BOOTL_1, BOOTL_2, COMBO_END};
-
-combo_t key_combos[] = {
-    [BOOTL_COMBO] = COMBO(bootl_combo, QK_BOOTLOADER),
-};
-
-
-// #ifdef OLED_ENABLE
-// #include "bongo.c"
-// #endif
-
